@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build -f ./app/Dockerfile --tag felzinpb/ci_cd/image-hello-word:$(date +%s)
+      run: docker build -f ./app/Dockerfile --tag felzinpb/ci_cd/image-hello-word:1.0
     - name: Login to Docker Hub
       run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Push the Docker image
-      run: docker push felzinpb/ci_cd/image-hello-word:$(date +%s)
+      run: docker push felzinpb/ci_cd/image-hello-word:1.0
