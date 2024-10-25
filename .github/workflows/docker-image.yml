@@ -21,7 +21,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build the Docker image
-      uses: docker/build-push-action@v3   
+      uses: docker/build-push-action@v6
 
       with:
         context: ./app
