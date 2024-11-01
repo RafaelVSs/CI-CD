@@ -26,4 +26,4 @@ jobs:
       with:
         context: ./app
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/ci_ci:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/ci_cd:latest
