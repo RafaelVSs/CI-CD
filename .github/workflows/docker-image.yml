@@ -27,3 +27,16 @@ jobs:
         context: ./app
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/ci_cd:latest
+
+    - name: SSH into server and deploy
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+          host: ${{ secrets.SERVER_IP }}
+          port: ${{ secrets.SERVER_PORT }} 
+          key: ${{ secrets.SERVER_KEY }}
+          script: |
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+            docker pull ${{ secrets.DOCKER_USERNAME }}/ci_cd:latest
+            docker stop my_app || true
+            docker rm my_app || true
+            docker run -d -p 8080:80 --name my_app ${{ secrets.DOCKER_USERNAME }}/ci_cd:latest 
