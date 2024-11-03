@@ -33,6 +33,7 @@ jobs:
       with:
           host: ${{ secrets.SERVER_IP }}
           port: ${{ secrets.SERVER_PORT }} 
+          username: aluno
           key: ${{ secrets.SERVER_KEY }}
           script: |
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
