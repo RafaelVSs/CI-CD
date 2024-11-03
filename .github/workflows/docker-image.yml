@@ -35,6 +35,7 @@ jobs:
           port: ${{ secrets.SERVER_PORT }} 
           username: aluno
           key: ${{ secrets.SERVER_KEY }}
+          debug: true
           script: |
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
             docker pull ${{ secrets.DOCKER_USERNAME }}/ci_cd:latest
