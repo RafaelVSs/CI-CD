@@ -32,7 +32,7 @@ jobs:
       uses: appleboy/ssh-action@v0.1.10
       with:
           host: ${{ secrets.SERVER_IP }}
-          port: ${{ secrets.SERVER_PORT }} 
+          port: ${{ secrets.SERVER_SSH_PORT }} 
           username: aluno
           key: ${{ secrets.SERVER_KEY }}
           debug: true
@@ -41,4 +41,5 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/ci_cd:latest
             docker stop my_app || true
             docker rm my_app || true
-            docker run -d -p 8080:80 --name my_app ${{ secrets.DOCKER_USERNAME }}/ci_cd:latest 
+            docker run -d -p ${{secrets.SERVER_PORT}}:${{secrets.SERVER_PORT}} --name my_app ${{ secrets.DOCKER_USERNAME }}/ci_cd:latest 
+        
